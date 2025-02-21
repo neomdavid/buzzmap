@@ -5,38 +5,44 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String currentRoute = ModalRoute.of(context)?.settings.name ?? '/';
-
     return Scaffold(
-      appBar: AppBar(title: const Text('Home')),
+      appBar: AppBar(
+        title: const Text(
+          'Home',
+          style: TextStyle(
+            fontFamily: 'Koulen',
+            fontSize: 24,
+          ),
+        ),
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            _buildNavButton(context, 'Home', '/', currentRoute),
-            _buildNavButton(context, 'Go to Mapping', '/mapping', currentRoute),
-            _buildNavButton(
-                context, 'Go to Community', '/community', currentRoute),
-            _buildNavButton(
-                context, 'Go to Prevention', '/prevention', currentRoute),
+            _buildNavButton(context, 'Go to Mapping', '/mapping'),
+            _buildNavButton(context, 'Go to Community', '/community'),
+            _buildNavButton(context, 'Go to Prevention', '/prevention'),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildNavButton(
-      BuildContext context, String text, String route, String currentRoute) {
-    bool isActive = currentRoute == route;
+  Widget _buildNavButton(BuildContext context, String text, String route) {
     return ElevatedButton(
-      onPressed: isActive ? null : () => Navigator.pushNamed(context, route),
+      onPressed: () => Navigator.pushNamed(context, route),
       style: ElevatedButton.styleFrom(
-        backgroundColor: isActive
-            ? Theme.of(context).colorScheme.secondary
-            : Theme.of(context).colorScheme.primary,
-        foregroundColor: isActive ? Colors.black : Colors.white,
+        foregroundColor: Colors.white,
+        backgroundColor: const Color(0xFF245261),
       ),
-      child: Text(text),
+      child: Text(
+        text,
+        style: const TextStyle(
+          fontFamily: 'Inter',
+          fontSize: 16,
+          fontWeight: FontWeight.w600,
+        ),
+      ),
     );
   }
 }
