@@ -11,7 +11,23 @@ class MenuScreen extends StatelessWidget {
     final theme = Theme.of(context);
 
     return Scaffold(
-      appBar: AppBar(backgroundColor: Colors.white),
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        automaticallyImplyLeading: false, // Remove default back button
+        actions: [
+          IconButton(
+            icon: Icon(
+              Icons.close,
+              size: 32,
+              color: theme.colorScheme.primary,
+            ),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
+          const SizedBox(width: 8),
+        ],
+      ),
       body: Padding(
         padding: const EdgeInsets.all(12.0),
         child: Column(

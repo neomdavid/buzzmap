@@ -17,14 +17,13 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-
     final bool isDarkMode = themeMode == "dark";
+
     final Color backgroundColor =
         isDarkMode ? theme.colorScheme.primary : Colors.white;
     final Color textColor =
         isDarkMode ? Colors.white : theme.colorScheme.primary;
-    final Color iconColor =
-        isDarkMode ? Colors.white : theme.colorScheme.primary;
+    final Color iconColor = textColor;
 
     return AppBar(
       automaticallyImplyLeading: false,
@@ -83,16 +82,35 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         ),
         const SizedBox(width: 8),
         IconButton(
-          icon: Icon(
-            Icons.menu,
-            size: 32,
-            color: iconColor,
-          ),
+          icon: Icon(Icons.menu, size: 32, color: iconColor),
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(
-                builder: (context) => MenuScreen(currentRoute: currentRoute),
+              PageRouteBuilder(
+                transitionDuration: const Duration(milliseconds: 300),
+                reverseTransitionDuration: const Duration(milliseconds: 300),
+                pageBuilder: (context, animation, secondaryAnimation) {
+                  return MenuScreen(currentRoute: currentRoute);
+                },
+                transitionsBuilder:
+                    (context, animation, secondaryAnimation, child) {
+                  const begin = Offset(1.0, 0.0);
+                  const end = Offset.zero;
+                  const curve = Curves.easeInOut;
+
+                  var slideTween = Tween(begin: begin, end: end)
+                      .chain(CurveTween(curve: curve));
+                  var slideAnimation = animation.drive(slideTween);
+
+                  var fadeTween = Tween<double>(begin: 1.0, end: 0.0);
+                  var fadeAnimation = animation.drive(fadeTween);
+
+                  return FadeTransition(
+                    opacity: secondaryAnimation.drive(fadeTween),
+                    child:
+                        SlideTransition(position: slideAnimation, child: child),
+                  );
+                },
               ),
             );
           },
