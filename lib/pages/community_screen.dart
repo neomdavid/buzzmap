@@ -1,3 +1,4 @@
+import 'package:buzzmap/widgets/appbar/custom_app_bar.dart';
 import 'package:flutter/material.dart';
 
 class CommunityScreen extends StatelessWidget {
@@ -5,10 +6,14 @@ class CommunityScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Community')),
-      body: const Center(
-        child: Text('Community Screen'),
+    return const Scaffold(
+      backgroundColor: Colors.white,
+      appBar: CustomAppBar(
+        title: 'Community',
+        currentRoute: '/community',
+      ),
+      body: Center(
+        child: Text('Community Screen Content Here'),
       ),
     );
   }

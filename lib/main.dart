@@ -1,6 +1,7 @@
 import 'package:buzzmap/pages/community_screen.dart';
 import 'package:buzzmap/pages/home_screen.dart';
 import 'package:buzzmap/pages/mapping_screen.dart';
+import 'package:buzzmap/pages/menu_screen.dart';
 import 'package:buzzmap/pages/prevention_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -29,6 +30,10 @@ class MyApp extends StatelessWidget {
         ),
         scaffoldBackgroundColor: Colors.white,
         useMaterial3: true,
+        appBarTheme: const AppBarTheme(
+            titleTextStyle: TextStyle(
+                fontSize: 40, fontWeight: FontWeight.w900, letterSpacing: 1.2),
+            backgroundColor: Color.fromRGBO(36, 82, 97, 1)),
       ),
       initialRoute: '/',
       routes: {
