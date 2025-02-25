@@ -1,7 +1,9 @@
-import 'package:buzzmap/pages/community_screen.dart';
+import 'package:buzzmap/pages/splash_screen.dart';
 import 'package:buzzmap/pages/home_screen.dart';
 import 'package:buzzmap/pages/mapping_screen.dart';
+import 'package:buzzmap/pages/community_screen.dart';
 import 'package:buzzmap/pages/prevention_screen.dart';
+import 'package:buzzmap/pages/about_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -141,10 +143,12 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/',
       routes: {
-        '/': (context) => const HomeScreen(),
+        '/': (context) => const SplashScreen(),
+        '/home': (context) => const HomeScreen(),
         '/mapping': (context) => const MappingScreen(),
         '/community': (context) => const CommunityScreen(),
         '/prevention': (context) => const PreventionScreen(),
+        '/about': (context) => const AboutScreen(),
       },
     );
   }

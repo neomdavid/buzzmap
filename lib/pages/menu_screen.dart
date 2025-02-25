@@ -13,7 +13,7 @@ class MenuScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-        automaticallyImplyLeading: false, // Remove default back button
+        automaticallyImplyLeading: false,
         actions: [
           IconButton(
             icon: Icon(
@@ -44,6 +44,8 @@ class MenuScreen extends StatelessWidget {
             _buildMenuButton(context, 'Mapping', '/mapping', theme),
             _buildMenuButton(context, 'Community', '/community', theme),
             _buildMenuButton(context, 'Prevention', '/prevention', theme),
+            _buildMenuButton(context, 'About', '/about',
+                theme), // Added About page in the menu
           ],
         ),
       ),
@@ -58,7 +60,8 @@ class MenuScreen extends StatelessWidget {
       onPressed: () {
         Navigator.pop(context);
         if (!isActive) {
-          Navigator.pushNamed(context, route);
+          // Ensure Home goes to '/home' instead of '/'
+          Navigator.pushNamed(context, route == '/' ? '/home' : route);
         }
       },
       child: Text(
@@ -75,3 +78,5 @@ class MenuScreen extends StatelessWidget {
     );
   }
 }
+
+// About page route is now in the menu! 🚀
