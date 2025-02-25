@@ -225,6 +225,7 @@ class TipsScreen extends StatelessWidget {
                 ],
               ),
             ),
+            const SizedBox(height: 20),
           ],
         ),
       ),

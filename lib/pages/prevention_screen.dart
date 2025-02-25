@@ -27,13 +27,13 @@ class PreventionScreen extends StatelessWidget {
       body: ListView(
         padding: const EdgeInsets.symmetric(horizontal: 13.0),
         children: [
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           Align(
               alignment: Alignment.topCenter,
               child: Column(
                 children: [
                   Container(
-                      padding: EdgeInsets.symmetric(horizontal: 10.0),
+                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
                       alignment: Alignment.centerLeft,
                       height: 25,
                       width: 330,
@@ -56,7 +56,7 @@ class PreventionScreen extends StatelessWidget {
                       )),
                   const SizedBox(height: 20),
                   SizedBox(
-                      width: 375,
+                      width: 360,
                       height: 140,
                       child: Stack(clipBehavior: Clip.none, children: [
                         Container(
@@ -138,7 +138,7 @@ class PreventionScreen extends StatelessWidget {
                                   height: 250,
                                 )),
                             Positioned(
-                                top: -30,
+                                bottom: 12,
                                 right: 12,
                                 child: Container(
                                     width: 150,
@@ -166,13 +166,21 @@ class PreventionScreen extends StatelessWidget {
                                                     color: onPrimaryColor,
                                                     fontWeight:
                                                         FontWeight.bold)),
-                                            Text(
-                                                '80% of users have\nread this article',
-                                                textAlign: TextAlign.right,
-                                                style: TextStyle(
-                                                  fontSize: 7,
-                                                  color: onPrimaryColor,
-                                                )),
+                                            Text.rich(
+                                              TextSpan(
+                                                  text:
+                                                      '80% of users have\nread this article',
+                                                  style: TextStyle(
+                                                      fontSize: 8,
+                                                      color: onPrimaryColor,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      decoration: TextDecoration
+                                                          .underline,
+                                                      decorationColor:
+                                                          onPrimaryColor)),
+                                              textAlign: TextAlign.right,
+                                            ),
                                           ],
                                         )))),
                             Positioned(
@@ -180,12 +188,13 @@ class PreventionScreen extends StatelessWidget {
                                 right: 10,
                                 child: ClipOval(
                                     child: Container(
-                                  width: 45,
-                                  height: 45,
+                                  width: 38,
+                                  height: 38,
                                   alignment: Alignment.center,
                                   color: Colors.yellow,
-                                  child: const Icon(Icons.arrow_forward,
-                                      color: Colors.black),
+                                  child: const Icon(
+                                      Icons.arrow_forward_ios_rounded,
+                                      color: primaryColor),
                                 )))
                           ])),
                       SizedBox(
@@ -214,29 +223,28 @@ class PreventionScreen extends StatelessWidget {
                                 child: Container(
                                     width: 150,
                                     height: 50,
-                                    color: Colors.transparent,
                                     alignment: Alignment.center,
                                     child: const FittedBox(
                                       fit: BoxFit.scaleDown,
                                       child: Text('KEEP YOUR\nPLACE SAFE',
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
-                                            fontSize: 22,
-                                            color: onPrimaryColor,
-                                            fontWeight: FontWeight.w700,
-                                          )),
+                                              fontSize: 20,
+                                              color: onPrimaryColor,
+                                              fontWeight: FontWeight.bold,
+                                              height: 0.9)),
                                     ))),
                             Positioned(
                                 bottom: 5,
                                 right: 10,
                                 child: ClipOval(
                                     child: Container(
-                                  width: 45,
-                                  height: 45,
+                                  width: 38,
+                                  height: 38,
                                   alignment: Alignment.center,
-                                  color: const Color(0xFF245261),
+                                  color: primaryColor,
                                   child: const Icon(Icons.arrow_forward,
-                                      color: Colors.black),
+                                      color: secondaryColor),
                                 )))
                           ])),
                     ],
