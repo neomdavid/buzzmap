@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:buzzmap/widgets/appbar/custom_app_bar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -28,12 +27,12 @@ class HomeScreen extends StatelessWidget {
             height: MediaQuery.of(context).size.height * 0.30,
             child: Container(
               decoration: BoxDecoration(
-                color: colorScheme.primary, // Background color
+                color: colorScheme.primary,
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withOpacity(0.6), // Shadow color
-                    blurRadius: 6, // Blur radius
-                    offset: const Offset(0, 5), // Shadow offset (x, y)
+                    color: Colors.black.withOpacity(0.6),
+                    blurRadius: 6,
+                    offset: const Offset(0, 5),
                   ),
                 ],
               ),
@@ -99,7 +98,7 @@ class HomeScreen extends StatelessWidget {
                             text: 'SPREAD ',
                             style: TextStyle(
                               fontFamily: 'Koulen',
-                              color: colorScheme.surface,
+                              color: Color.fromRGBO(153, 192, 211, 1),
                               fontSize: 37,
                               fontWeight: FontWeight.w900,
                               letterSpacing: 1.2,
@@ -126,8 +125,7 @@ class HomeScreen extends StatelessWidget {
                           fontFamily: 'Koulen',
                           height: 1),
                     ),
-                    _buildAwarenessSection(
-                        colorScheme), // Removed extra spacing
+                    _buildAwarenessSection(colorScheme),
                     RichText(
                       text: TextSpan(
                         children: [
@@ -137,8 +135,7 @@ class HomeScreen extends StatelessWidget {
                               fontSize: 35,
                               fontWeight: FontWeight.bold,
                               letterSpacing: 1.2,
-                              color: colorScheme
-                                  .primary, // Use primary color for "DENGUE"
+                              color: colorScheme.primary,
                               fontFamily: 'Koulen',
                             ),
                           ),
@@ -148,8 +145,7 @@ class HomeScreen extends StatelessWidget {
                               fontSize: 35,
                               fontWeight: FontWeight.bold,
                               letterSpacing: 1.2,
-                              color: const Color.fromARGB(255, 255, 222,
-                                  59), // Use yellow for "PREVENTION"
+                              color: const Color.fromARGB(255, 255, 222, 59),
                               fontFamily: 'Koulen',
                             ),
                           ),
@@ -159,15 +155,13 @@ class HomeScreen extends StatelessWidget {
                               fontSize: 35,
                               fontWeight: FontWeight.bold,
                               letterSpacing: 1.2,
-                              color: colorScheme
-                                  .primary, // Use primary color for "TIPS"
+                              color: colorScheme.primary,
                               fontFamily: 'Koulen',
                             ),
                           ),
                         ],
                       ),
                     ),
-
                     _buildPreventionCards(colorScheme),
                   ],
                 ),
@@ -184,7 +178,7 @@ class HomeScreen extends StatelessWidget {
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start, // Align to the top
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             _buildCard(
               colorScheme,
@@ -201,31 +195,28 @@ class HomeScreen extends StatelessWidget {
                   'TRAVELERS BEWARE!',
                   "It's a big year for Dengue.",
                   width: 150,
-                  height: 110, // Adjusted to align with the bigger card
+                  height: 110,
                 ),
-                const SizedBox(
-                    height: 3), // Small spacing between card and button
+                const SizedBox(height: 3),
                 Container(
                   height: 35,
                   width: 150,
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
                       colors: [
-                        Color.fromRGBO(248, 169, 0, 1), // Left color
-                        Color.fromRGBO(250, 221, 55, 1), // Right color
+                        Color.fromRGBO(248, 169, 0, 1),
+                        Color.fromRGBO(250, 221, 55, 1),
                       ],
                       begin: Alignment.centerLeft,
                       end: Alignment.centerRight,
                     ),
-                    borderRadius:
-                        BorderRadius.circular(30), // Match button shape
+                    borderRadius: BorderRadius.circular(30),
                   ),
                   child: ElevatedButton(
                     onPressed: () {},
                     style: ElevatedButton.styleFrom(
-                      backgroundColor:
-                          Colors.transparent, // Transparent to show gradient
-                      shadowColor: Colors.transparent, // Remove shadow
+                      backgroundColor: Colors.transparent,
+                      shadowColor: Colors.transparent,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30),
                       ),
@@ -256,9 +247,8 @@ class HomeScreen extends StatelessWidget {
       width: width,
       height: height,
       child: Stack(
-        clipBehavior: Clip.none, // Allow image to overflow the card
+        clipBehavior: Clip.none,
         children: [
-          // Background Card
           Container(
             padding: const EdgeInsets.all(15),
             decoration: BoxDecoration(
@@ -269,7 +259,6 @@ class HomeScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                // Left side (Text and Button)
                 Expanded(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -285,9 +274,6 @@ class HomeScreen extends StatelessWidget {
                             height: 1.3),
                       ),
                       const SizedBox(height: 5),
-
-                      // Gradient Button
-                      // Gradient Button Wrapper
                       Container(
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(15),
@@ -301,15 +287,13 @@ class HomeScreen extends StatelessWidget {
                           ),
                         ),
                         child: Material(
-                          color: Colors
-                              .transparent, // Transparent to show gradient
+                          color: Colors.transparent,
                           child: InkWell(
                             borderRadius: BorderRadius.circular(30),
-                            onTap: () {}, // Button action
+                            onTap: () {},
                             child: Padding(
                               padding: const EdgeInsets.symmetric(
-                                  horizontal: 15,
-                                  vertical: 4), // Modify vertical size freely
+                                  horizontal: 15, vertical: 4),
                               child: const Text(
                                 'Learn More',
                                 style: TextStyle(
@@ -328,16 +312,14 @@ class HomeScreen extends StatelessWidget {
               ],
             ),
           ),
-
-          // Overlapping Image
           Positioned(
-            right: -15, // Move image slightly outside the card
+            right: -15,
             top: -1,
             child: SizedBox(
               width: 140,
               height: 150,
               child: OverflowBox(
-                maxWidth: 140, // Allow it to extend beyond card
+                maxWidth: 140,
                 maxHeight: 180,
                 child: Image.asset(imagePath, fit: BoxFit.contain),
               ),
@@ -381,7 +363,7 @@ class HomeScreen extends StatelessWidget {
                   subtitle,
                   textAlign: TextAlign.center,
                   style: const TextStyle(
-                    fontSize: 11,
+                    fontSize: 10,
                     color: Colors.white,
                     height: 1,
                   ),
@@ -402,14 +384,13 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
               child: Material(
-                color: Colors.transparent, // Transparent to show gradient
+                color: Colors.transparent,
                 child: InkWell(
                   borderRadius: BorderRadius.circular(30),
-                  onTap: () {}, // Button action
+                  onTap: () {},
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20,
-                        vertical: 4), // Modify vertical size freely
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 20, vertical: 2),
                     child: const Text(
                       'Learn More',
                       style: TextStyle(
@@ -440,8 +421,8 @@ class HomeScreen extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 56.0),
       child: SizedBox(
-        width: 300, // Set a fixed width for the button (adjust as needed)
-        height: 30, // Set a fixed height for the button (adjust as needed)
+        width: 300,
+        height: 30,
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 0),
           decoration: BoxDecoration(
@@ -497,14 +478,16 @@ class HomeScreen extends StatelessWidget {
     return Column(
       children: [
         const SizedBox(height: 12),
-        // Wrap the button Container in a SizedBox or ConstrainedBox
         SizedBox(
           height: 45,
-          width: 350, // Set a fixed width for the button (adjust as needed)
+          width: 350,
           child: Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
-                colors: [colorScheme.primary, colorScheme.surface],
+                colors: [
+                  Color.fromRGBO(36, 82, 97, 1),
+                  Color.fromRGBO(74, 168, 199, 1),
+                ],
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
               ),
@@ -520,19 +503,16 @@ class HomeScreen extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
             child: Row(
               children: [
-                // Left Side: Asset Image (as before)
                 Container(
                   child: ClipOval(
                     child: SvgPicture.asset(
-                      'assets/icons/Person.svg', // Replace with the path to your SVG file
-                      width: 40, // Set the exact width
-                      height:
-                          40, // Replace with the path to your local image asset
-                      fit: BoxFit.cover, // Adjust the fit as needed
+                      'assets/icons/Person.svg',
+                      width: 40,
+                      height: 40,
+                      fit: BoxFit.cover,
                       errorBuilder: (context, error, stackTrace) {
                         return const Icon(
-                          Icons
-                              .person, // Fallback icon if the image fails to load
+                          Icons.person,
                           color: Colors.white,
                         );
                       },
@@ -540,7 +520,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(width: 8),
-                // Middle: Text Container
+                // Middle | Share your report Container
                 Expanded(
                   child: Container(
                     padding:
@@ -561,55 +541,48 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(width: 8),
-                // Right Side: Flutter Icon (Send Button) - No Box Shape
                 Icon(
-                  Icons.send, // Flutter send icon
-                  color: Colors.white, // White icon color
-                  size: 24, // Adjust size as needed
+                  Icons.send,
+                  color: Colors.white,
+                  size: 24,
                 ),
               ],
             ),
           ),
         ),
-
         const SizedBox(height: 12),
         SizedBox(
-          width: 250, // Set a fixed width for the button (adjust as needed)
-          height: 40, // Set a fixed height for the button (adjust as needed)
+          width: 250,
+          height: 40,
           child: ElevatedButton(
-            onPressed: () {
-              // Handle button press
-            },
+            onPressed: () {},
             style: ElevatedButton.styleFrom(
-              foregroundColor: Colors.white, // Text color
-              padding: const EdgeInsets.symmetric(
-                  horizontal: 14, vertical: 6), // Button padding
+              foregroundColor: Colors.white,
+              padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(30), // Rounded corners
+                borderRadius: BorderRadius.circular(30),
               ),
-              backgroundColor:
-                  Colors.transparent, // Make button background transparent
-              shadowColor: Colors.transparent, // Remove shadow
+              backgroundColor: Colors.transparent,
+              shadowColor: Colors.transparent,
             ),
             child: Ink(
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   colors: [
-                    Colors.orange, // Start color
-                    const Color.fromARGB(255, 246, 174, 68), // End color
+                    Colors.orange,
+                    const Color.fromARGB(255, 246, 174, 68),
                   ],
-                  begin: Alignment.centerLeft, // Gradient starts from the left
-                  end: Alignment.centerRight, // Gradient ends at the right
+                  begin: Alignment.centerLeft,
+                  end: Alignment.centerRight,
                 ),
-                borderRadius:
-                    BorderRadius.circular(30), // Match button's border radius
+                borderRadius: BorderRadius.circular(30),
               ),
               child: Container(
                 alignment: Alignment.center,
                 child: _buildText(
                   'Read more dengue reports here.',
                   style: TextStyle(
-                    color: colorScheme.primary, // Ensure text is white
+                    color: colorScheme.primary,
                     fontWeight: FontWeight.w900,
                     fontStyle: FontStyle.italic,
                     fontSize: 12,

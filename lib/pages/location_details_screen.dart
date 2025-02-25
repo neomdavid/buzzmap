@@ -72,7 +72,7 @@ class _LocationDetailsScreenState extends State<LocationDetailsScreen> {
                 left: 0,
                 right: 0,
                 child: Container(
-                  height: 230, // Adjust height for the map
+                  height: 230,
                   margin: const EdgeInsets.symmetric(horizontal: 16),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
@@ -87,14 +87,14 @@ class _LocationDetailsScreenState extends State<LocationDetailsScreen> {
                 bottom: 30,
                 left: 34,
                 child: SizedBox(
-                  width: 116, // Adjust width as needed
-                  height: 31, // Adjust height as needed
+                  width: 116,
+                  height: 31,
                   child: DecoratedBox(
                     decoration: BoxDecoration(
                       gradient: const LinearGradient(
                         colors: [
-                          Color.fromRGBO(248, 169, 0, 1), // Orange
-                          Color.fromRGBO(250, 221, 55, 1), // Yellow
+                          Color.fromRGBO(248, 169, 0, 1),
+                          Color.fromRGBO(250, 221, 55, 1),
                         ],
                         begin: Alignment.centerLeft,
                         end: Alignment.centerRight,
@@ -111,8 +111,7 @@ class _LocationDetailsScreenState extends State<LocationDetailsScreen> {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(15),
                         ),
-                        padding: EdgeInsets
-                            .zero, // Ensures button fills the container
+                        padding: EdgeInsets.zero,
                       ),
                       child: const Text(
                         "Back to Maps",

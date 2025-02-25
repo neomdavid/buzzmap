@@ -32,7 +32,7 @@ class MappingScreen extends StatelessWidget {
                   letterSpacing: 1.2,
                   fontWeight: FontWeight.bold,
                   color: Colors.white,
-                  height: 1.5, // Removed extra spacing
+                  height: 1.5,
                 ),
               ),
               const Text(
@@ -43,7 +43,7 @@ class MappingScreen extends StatelessWidget {
                   fontWeight: FontWeight.w600,
                   fontSize: 13,
                   color: Colors.white,
-                  height: 1, // Removed extra spacing
+                  height: 1,
                 ),
               ),
               _buildLocationSelector(context, colorScheme),
@@ -55,11 +55,11 @@ class MappingScreen extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(12),
                 child: SizedBox(
-                  width: 400, // Allows width control
-                  height: 100, // Allows height control
+                  width: 400,
+                  height: 100,
                   child: Image.asset(
                     'assets/bgarts/Greenmarkers.png',
-                    fit: BoxFit.cover, // Adjust as needed
+                    fit: BoxFit.cover,
                   ),
                 ),
               ),

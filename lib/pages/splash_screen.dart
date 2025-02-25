@@ -25,7 +25,6 @@ class _SplashScreenState extends State<SplashScreen> {
         _showFirstImage = !_showFirstImage;
       });
 
-      // Navigate to home screen after animation
       Future.delayed(const Duration(seconds: 3), () {
         if (mounted) {
           Navigator.pushReplacementNamed(context, '/home');
@@ -41,19 +40,18 @@ class _SplashScreenState extends State<SplashScreen> {
         duration: const Duration(seconds: 2),
         color: _showFirstImage
             ? Colors.white
-            : const Color.fromRGBO(
-                36, 82, 97, 1), // Background color transition
+            : const Color.fromRGBO(36, 82, 97, 1),
         child: Center(
           child: AnimatedCrossFade(
             duration: const Duration(seconds: 2),
             firstChild: SvgPicture.asset(
-              'assets/icons/logo_darkbg.svg', // Corrected
+              'assets/icons/logo_darkbg.svg',
               width: 200,
               height: 200,
               fit: BoxFit.contain,
             ),
             secondChild: SvgPicture.asset(
-              'assets/icons/logo_ligthbg.svg', // Corrected
+              'assets/icons/logo_ligthbg.svg',
               width: 200,
               height: 200,
               fit: BoxFit.contain,

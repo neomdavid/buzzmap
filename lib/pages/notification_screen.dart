@@ -36,8 +36,7 @@ class NotificationScreen extends StatelessWidget {
                   fontSize: 14, fontWeight: FontWeight.bold, color: textColor),
             ),
             const Divider(color: Color.fromRGBO(36, 82, 97, 1), thickness: 1),
-            const SizedBox(height: 10), // Spacer
-
+            const SizedBox(height: 10),
             Text(
               "This Week",
               style: TextStyle(
