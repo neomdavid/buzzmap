@@ -1,3 +1,4 @@
+import 'package:buzzmap/widgets/post_card.dart';
 import 'package:flutter/material.dart';
 import 'package:buzzmap/widgets/appbar/custom_app_bar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -14,6 +15,7 @@ class LocationDetailsScreen extends StatefulWidget {
 class _LocationDetailsScreenState extends State<LocationDetailsScreen> {
   @override
   Widget build(BuildContext context) {
+    final scheme = Theme.of(context);
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 255, 255, 255),
       appBar: CustomAppBar(
@@ -132,153 +134,200 @@ class _LocationDetailsScreenState extends State<LocationDetailsScreen> {
           // Scrollable section
           Expanded(
             child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  const SizedBox(height: 20),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 20.0),
-                    child: Text(
-                      "Were there any cases related to Dengue \nthat you can share with us in this area?",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontFamily: 'Inter',
-                        fontSize: 15,
-                        fontWeight: FontWeight.w900,
-                        color: Color.fromRGBO(36, 82, 97, 1),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 1),
-                  const Text(
-                    "REPORT NOW!",
-                    style: TextStyle(
-                      fontSize: 26,
-                      fontFamily: 'Koulen',
-                      fontStyle: FontStyle.italic,
-                      fontWeight: FontWeight.bold,
-                      color: Color.fromRGBO(36, 82, 97, 1),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 300, // Fixed height
-                    width: 380,
-                    child: Container(
-                      padding: const EdgeInsets.all(20),
-                      decoration: BoxDecoration(
-                        gradient: const LinearGradient(
-                          colors: [
-                            Color.fromRGBO(36, 82, 97, 1),
-                            Color.fromRGBO(74, 168, 199, 1),
-                          ],
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Column(
+                  children: [
+                    const SizedBox(height: 20),
+                    Center(
+                      child: Text(
+                        "Were there any cases related to Dengue \nthat you can share with us in this area?",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontFamily: 'Inter',
+                          fontSize: 15,
+                          fontWeight: FontWeight.w900,
+                          color: Color.fromRGBO(36, 82, 97, 1),
                         ),
-                        borderRadius: BorderRadius.circular(15),
                       ),
-                      child: SingleChildScrollView(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              children: [
-                                SizedBox(
-                                  width: 46,
-                                  height: 46,
-                                  child: SvgPicture.asset(
-                                    'assets/icons/Person.svg',
+                    ),
+                    const SizedBox(height: 1),
+                    Center(
+                      child: const Text(
+                        "REPORT NOW!",
+                        style: TextStyle(
+                          fontSize: 26,
+                          fontFamily: 'Koulen',
+                          fontStyle: FontStyle.italic,
+                          fontWeight: FontWeight.bold,
+                          color: Color.fromRGBO(36, 82, 97, 1),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 300, // Fixed height
+                      width: 380,
+                      child: Container(
+                        padding: const EdgeInsets.all(20),
+                        decoration: BoxDecoration(
+                          gradient: const LinearGradient(
+                            colors: [
+                              Color.fromRGBO(36, 82, 97, 1),
+                              Color.fromRGBO(74, 168, 199, 1),
+                            ],
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                          ),
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        child: SingleChildScrollView(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                children: [
+                                  SizedBox(
+                                    width: 46,
+                                    height: 46,
+                                    child: SvgPicture.asset(
+                                      'assets/icons/Person.svg',
+                                    ),
                                   ),
-                                ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: const [
-                                    Row(
-                                      children: [
-                                        Icon(Icons.access_time,
-                                            color: Colors.white, size: 16),
-                                        SizedBox(width: 5),
-                                        Text(
-                                          "Date and Time: February 15, 2025, 3:45 PM",
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 12),
-                                        ),
-                                      ],
-                                    ),
-                                    SizedBox(height: 5),
-                                    Row(
-                                      children: [
-                                        Icon(Icons.warning,
-                                            color: Colors.white, size: 16),
-                                        SizedBox(width: 5),
-                                        Text(
-                                          "Report Type: Suspected Dengue Outbreak",
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 12),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                            const SizedBox(height: 10),
-                            const Text(
-                              "Description:",
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white,
-                                fontSize: 14,
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: const [
+                                      Row(
+                                        children: [
+                                          Icon(Icons.access_time,
+                                              color: Colors.white, size: 16),
+                                          SizedBox(width: 5),
+                                          Text(
+                                            "Date and Time: February 15, 2025, 3:45 PM",
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 12),
+                                          ),
+                                        ],
+                                      ),
+                                      SizedBox(height: 5),
+                                      Row(
+                                        children: [
+                                          Icon(Icons.warning,
+                                              color: Colors.white, size: 16),
+                                          SizedBox(width: 5),
+                                          Text(
+                                            "Report Type: Suspected Dengue Outbreak",
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 12),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ],
                               ),
-                            ),
-                            const SizedBox(height: 5),
-                            Container(
-                              padding: const EdgeInsets.all(10),
-                              decoration: BoxDecoration(
-                                color: Colors.white.withOpacity(0.9),
-                                borderRadius: BorderRadius.circular(8),
-                              ),
-                              child: const Text(
-                                "Mosquito sightings are common near the CEB Parking Lot, where stagnant water has accumulated after recent rains. Some areas around the lagoon also have poor drainage, increasing the risk of mosquito breeding. Requesting cleanup and possible fumigation to reduce the risk of further infections.",
+                              const SizedBox(height: 10),
+                              const Text(
+                                "Description:",
                                 style: TextStyle(
-                                  color: Color.fromRGBO(36, 82, 97, 1),
-                                  fontSize: 12,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                  fontSize: 14,
                                 ),
                               ),
-                            ),
-                            const SizedBox(height: 10),
-                            Align(
-                              alignment: Alignment.center,
-                              child: ElevatedButton(
-                                onPressed: () {},
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.amber,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(20),
-                                  ),
-                                  minimumSize: const Size(180, 40),
+                              const SizedBox(height: 5),
+                              Container(
+                                padding: const EdgeInsets.all(10),
+                                decoration: BoxDecoration(
+                                  color: Colors.white.withOpacity(0.9),
+                                  borderRadius: BorderRadius.circular(8),
                                 ),
-                                child: const Padding(
-                                  padding: EdgeInsets.symmetric(
-                                      vertical: 8.0, horizontal: 20),
-                                  child: Text(
-                                    "Send Report",
-                                    style: TextStyle(
-                                      fontStyle: FontStyle.italic,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 14,
-                                      color: Color.fromRGBO(36, 82, 97, 1),
+                                child: const Text(
+                                  "Mosquito sightings are common near the CEB Parking Lot, where stagnant water has accumulated after recent rains. Some areas around the lagoon also have poor drainage, increasing the risk of mosquito breeding. Requesting cleanup and possible fumigation to reduce the risk of further infections.",
+                                  style: TextStyle(
+                                    color: Color.fromRGBO(36, 82, 97, 1),
+                                    fontSize: 12,
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(height: 10),
+                              Align(
+                                alignment: Alignment.center,
+                                child: ElevatedButton(
+                                  onPressed: () {},
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: Colors.amber,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(20),
+                                    ),
+                                    minimumSize: const Size(180, 40),
+                                  ),
+                                  child: const Padding(
+                                    padding: EdgeInsets.symmetric(
+                                        vertical: 8.0, horizontal: 20),
+                                    child: Text(
+                                      "Send Report",
+                                      style: TextStyle(
+                                        fontStyle: FontStyle.italic,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 14,
+                                        color: Color.fromRGBO(36, 82, 97, 1),
+                                      ),
                                     ),
                                   ),
                                 ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                ],
+                    SizedBox(height: 24),
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'WHAT OTHERS ARE REPORTING...',
+                        style: scheme.textTheme.headlineLarge,
+                      ),
+                    ),
+                    PostCard(
+                      username: 'Anonymous Rabbit',
+                      whenPosted: '1 minute ago',
+                      date: 'February 15, 2025',
+                      time: '2:30 PM',
+                      reportType: 'Mosquito Breeding Grounds Spotted',
+                      description:
+                          'Noticed stagnant water collecting near the back of the ChemEng building after recent rains. Mosquitoes are swarming in the area, and some students have reported frequent bites. Needs immediate drainage cleanup to prevent dengue risk.',
+                      numLikes: 5,
+                      numComments: 1,
+                      numShares: 1,
+                      iconUrl: 'assets/icons/person_3.svg',
+                      type: 'bordered',
+                    ),
+                    SizedBox(
+                      height: 16,
+                    ),
+                    PostCard(
+                      username: 'Anonymous Fox',
+                      whenPosted: '30 minute ago',
+                      date: 'February 15, 2025',
+                      time: '2:30 PM',
+                      reportType: 'Mosquito Breeding Grounds Spotted',
+                      description:
+                          'Noticed stagnant water collecting near the back of the ChemEng building after recent rains. Mosquitoes are swarming in the area, and some students have reported frequent bites. Needs immediate drainage cleanup to prevent dengue risk.',
+                      numLikes: 50,
+                      numComments: 24,
+                      numShares: 1,
+                      iconUrl: 'assets/icons/person_4.svg',
+                      type: 'bordered',
+                    ),
+                    SizedBox(
+                      height: 16,
+                    )
+                  ],
+                ),
               ),
             ),
           ),
