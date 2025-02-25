@@ -1,6 +1,7 @@
 import 'package:buzzmap/main.dart';
 import 'package:buzzmap/widgets/engagement_row.dart';
 import 'package:buzzmap/widgets/user_info_row.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -96,7 +97,7 @@ class AnnouncementCard extends StatelessWidget {
                   const Image(
                     height: 200,
                     fit: BoxFit.cover,
-                    image: NetworkImage(
+                    image: CachedNetworkImageProvider(
                         'https://s3-alpha-sig.figma.com/img/2116/69ab/45687c69d4566c2c5945c6fddc376891?Expires=1740960000&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=SAmDUTwSeRhCu~SEit1oH~hBQCy0slLNTKZ421pC0xWjdzwBgh1B0qJeiQ-5b0cTrPuRiJ3kAJp7WC8gCxZkftfeWFm3Bwmd-qLyGY-e9eUVgMP04x~2gORoZHFTyGi9rFUEePPWKqu4dQ8WToKmAuPTkyazco0KayRz4255U3yV52pI3edm6AeQk~-QE0g25zkc1S0nFCx5JTKa1vynLx55Gw88~LiBzxIG7Ri9ae3FgeqetJ9IqB0xofIW~7FPZG3yYYinM5Iz3GAYEdjFvTdYKs5jh~fJ2kBjwsWCULjv1xEVSYtJAgwRJcs6RjtZBRbuRf3qzpi6mzAfpzBzig__'),
                   ),
                   Divider(
