@@ -1,3 +1,5 @@
+import 'package:buzzmap/pages/community_screen.dart';
+import 'package:buzzmap/widgets/floatingactionbutton/yellow_gradient_button.dart';
 import 'package:buzzmap/widgets/post_card.dart';
 import 'package:flutter/material.dart';
 import 'package:buzzmap/widgets/appbar/custom_app_bar.dart';
@@ -165,7 +167,7 @@ class _LocationDetailsScreenState extends State<LocationDetailsScreen> {
                       ),
                     ),
                     SizedBox(
-                      height: 300, // Fixed height
+                      height: 320, // Fixed height
                       width: 380,
                       child: Container(
                         padding: const EdgeInsets.all(20),
@@ -284,7 +286,7 @@ class _LocationDetailsScreenState extends State<LocationDetailsScreen> {
                         ),
                       ),
                     ),
-                    SizedBox(height: 24),
+                    const SizedBox(height: 24),
                     Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
@@ -292,7 +294,7 @@ class _LocationDetailsScreenState extends State<LocationDetailsScreen> {
                         style: scheme.textTheme.headlineLarge,
                       ),
                     ),
-                    PostCard(
+                    const PostCard(
                       username: 'Anonymous Rabbit',
                       whenPosted: '1 minute ago',
                       date: 'February 15, 2025',
@@ -306,24 +308,42 @@ class _LocationDetailsScreenState extends State<LocationDetailsScreen> {
                       iconUrl: 'assets/icons/person_3.svg',
                       type: 'bordered',
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 16,
                     ),
-                    PostCard(
+                    const PostCard(
                       username: 'Anonymous Fox',
-                      whenPosted: '30 minute ago',
+                      whenPosted: '30 minutes ago',
                       date: 'February 15, 2025',
-                      time: '2:30 PM',
+                      time: '10:15 AM',
                       reportType: 'Mosquito Breeding Grounds Spotted',
                       description:
-                          'Noticed stagnant water collecting near the back of the ChemEng building after recent rains. Mosquitoes are swarming in the area, and some students have reported frequent bites. Needs immediate drainage cleanup to prevent dengue risk.',
+                          'Spotted a large puddle of stagnant water near the side entrance of the CEB building. Mosquitoes are visibly swarming, and some students have reported recent bites. This could be a breeding ground for dengue-carrying mosquitoes. Urgent cleanup needed!',
                       numLikes: 50,
                       numComments: 24,
                       numShares: 1,
-                      iconUrl: 'assets/icons/person_4.svg',
+                      iconUrl: 'assets/icons/person_1.svg',
+                      type: 'bordered',
+                      images: ['assets/images/polluted_water_1.jpg'],
+                    ),
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    const PostCard(
+                      username: 'Anonymous Whale',
+                      whenPosted: '38 minutes ago',
+                      date: 'February 15, 2025',
+                      time: '9:30 AM',
+                      reportType: 'Mosquito Breeding Grounds Spotted',
+                      description:
+                          'Spotted a large puddle of stagnant water near the side entrance of the CEB building. Mosquitoes are visibly swarming, and some students have reported recent bites. This could be a breeding ground for dengue-carrying mosquitoes. Urgent cleanup needed!',
+                      numLikes: 23,
+                      numComments: 33,
+                      numShares: 3,
+                      iconUrl: 'assets/icons/person_1.svg',
                       type: 'bordered',
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 16,
                     )
                   ],
@@ -331,6 +351,26 @@ class _LocationDetailsScreenState extends State<LocationDetailsScreen> {
               ),
             ),
           ),
+        ],
+      ),
+      floatingActionButton: Stack(
+        children: [
+          YellowGradientButton(
+            name: 'Community',
+            bottom: 53,
+            right: 3,
+            height: 40,
+            width: 140,
+            route: '/community',
+          ),
+          YellowGradientButton(
+            name: 'Prevention Tips',
+            bottom: 3,
+            right: 3,
+            height: 40,
+            width: 160,
+            route: '/prevention',
+          )
         ],
       ),
     );

@@ -135,6 +135,7 @@ class PostCard extends StatelessWidget {
                           ),
                         ],
                       ),
+                      const SizedBox(height: 12),
                       if (images.isNotEmpty) _buildImageGrid(images),
                       const SizedBox(height: 12),
                       Divider(
