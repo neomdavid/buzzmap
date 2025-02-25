@@ -16,135 +16,154 @@ class PostCard extends StatelessWidget {
   final int numShares;
   final List<String> images;
   final String iconUrl; // Add iconUrl parameter
+  final String type;
 
-  const PostCard({
-    super.key,
-    required this.username,
-    required this.whenPosted,
-    required this.location,
-    required this.date,
-    required this.time,
-    required this.reportType,
-    required this.description,
-    required this.numLikes,
-    required this.numComments,
-    required this.numShares,
-    this.images = const <String>[],
-    required this.iconUrl, // Add iconUrl parameter
-  });
+  const PostCard(
+      {super.key,
+      required this.username,
+      required this.whenPosted,
+      this.location = '',
+      required this.date,
+      required this.time,
+      required this.reportType,
+      required this.description,
+      required this.numLikes,
+      required this.numComments,
+      required this.numShares,
+      this.images = const <String>[],
+      required this.iconUrl,
+      this.type = 'normal' // Add iconUrl parameter
+      });
 
   @override
   Widget build(BuildContext context) {
     final customColors = Theme.of(context).extension<CustomColors>();
     final theme = Theme.of(context);
+    final borderedType = type == 'bordered';
 
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              UserInfoRow(
-                title: username,
-                subtitle: whenPosted,
-                iconUrl: iconUrl, // Pass iconUrl to UserInfoRow
-                type: 'post',
+    return Container(
+      decoration: borderedType
+          ? BoxDecoration(
+              border: Border.all(
+                color: customColors?.surfaceLight ?? Colors.grey,
+                width: 1.5,
               ),
-              const SizedBox(height: 22),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 7),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Wrap(
-                      crossAxisAlignment: WrapCrossAlignment.center,
-                      children: [
-                        Text(
-                          '📍 Location: ',
-                          style: theme.textTheme.bodyMedium
-                              ?.copyWith(fontWeight: FontWeight.bold),
-                        ),
-                        Text(
-                          location,
-                          style: theme.textTheme.bodyMedium,
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 4),
-                    Wrap(
-                      crossAxisAlignment: WrapCrossAlignment.center,
-                      children: [
-                        Text(
-                          '🕒 Date & Time:',
-                          style: theme.textTheme.bodyMedium
-                              ?.copyWith(fontWeight: FontWeight.bold),
-                        ),
-                        const SizedBox(width: 8),
-                        Text(
-                          '$date, $time',
-                          style: theme.textTheme.bodyMedium,
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 4),
-                    Wrap(
-                      crossAxisAlignment: WrapCrossAlignment.center,
-                      children: [
-                        Text(
-                          '⚠️ Report Type:',
-                          style: theme.textTheme.bodyMedium
-                              ?.copyWith(fontWeight: FontWeight.bold),
-                        ),
-                        const SizedBox(width: 8),
-                        Text(
-                          reportType,
-                          style: theme.textTheme.bodyMedium,
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 4),
-                    Wrap(
-                      crossAxisAlignment: WrapCrossAlignment.start,
-                      children: [
-                        Text(
-                          '📝 Description',
-                          style: theme.textTheme.bodyMedium
-                              ?.copyWith(fontWeight: FontWeight.bold),
-                        ),
-                        const SizedBox(width: 8),
-                        Text(
-                          description,
-                          style: theme.textTheme.bodyMedium,
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 12),
-                    if (images.isNotEmpty) _buildImageGrid(images),
-                    const SizedBox(height: 12),
-                    Divider(
-                      color: customColors?.surfaceLight,
-                      thickness: .9,
-                      height: 6,
-                    ),
-                    const SizedBox(height: 10),
-                    EngagementRow(
-                      numLikes: numLikes,
-                      numComments: numComments,
-                      numShares: numShares,
-                      themeMode: 'light',
-                    ),
-                  ],
+              borderRadius: BorderRadius.circular(10),
+            )
+          : null,
+      child: Column(
+        children: [
+          Padding(
+            padding: !borderedType
+                ? EdgeInsets.symmetric(vertical: 30, horizontal: 20)
+                : EdgeInsets.symmetric(vertical: 20, horizontal: 15),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                UserInfoRow(
+                  title: username,
+                  subtitle: whenPosted,
+                  iconUrl: iconUrl, // Pass iconUrl to UserInfoRow
+                  type: 'post',
                 ),
-              ),
-            ],
+                const SizedBox(height: 22),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 7),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      if (!borderedType)
+                        Wrap(
+                          crossAxisAlignment: WrapCrossAlignment.center,
+                          children: [
+                            Text(
+                              '📍 Location: ',
+                              style: theme.textTheme.bodyMedium
+                                  ?.copyWith(fontWeight: FontWeight.bold),
+                            ),
+                            Text(
+                              location,
+                              style: theme.textTheme.bodyMedium,
+                            ),
+                          ],
+                        ),
+                      const SizedBox(height: 4),
+                      Wrap(
+                        crossAxisAlignment: WrapCrossAlignment.center,
+                        children: [
+                          Text(
+                            '🕒 Date & Time:',
+                            style: theme.textTheme.bodyMedium
+                                ?.copyWith(fontWeight: FontWeight.bold),
+                          ),
+                          const SizedBox(width: 8),
+                          Text(
+                            '$date, $time',
+                            style: theme.textTheme.bodyMedium,
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 4),
+                      Wrap(
+                        crossAxisAlignment: WrapCrossAlignment.center,
+                        children: [
+                          Text(
+                            '⚠️ Report Type:',
+                            style: theme.textTheme.bodyMedium
+                                ?.copyWith(fontWeight: FontWeight.bold),
+                          ),
+                          const SizedBox(width: 8),
+                          Text(
+                            reportType,
+                            style: theme.textTheme.bodyMedium,
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 4),
+                      Wrap(
+                        crossAxisAlignment: WrapCrossAlignment.start,
+                        children: [
+                          Text(
+                            '📝 Description',
+                            style: theme.textTheme.bodyMedium
+                                ?.copyWith(fontWeight: FontWeight.bold),
+                          ),
+                          const SizedBox(width: 8),
+                          Text(
+                            description,
+                            style: theme.textTheme.bodyMedium,
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 12),
+                      if (images.isNotEmpty) _buildImageGrid(images),
+                      const SizedBox(height: 12),
+                      Divider(
+                        color: customColors?.surfaceLight,
+                        thickness: .9,
+                        height: 6,
+                      ),
+                      const SizedBox(height: 10),
+                      EngagementRow(
+                        numLikes: numLikes,
+                        numComments: numComments,
+                        numShares: numShares,
+                        themeMode: 'light',
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
-        ),
-        Divider(
-          thickness: 8,
-          color: Colors.grey[300],
-        ),
-      ],
+          !borderedType
+              ? Divider(
+                  thickness: 8,
+                  color: Colors.grey[300],
+                )
+              : SizedBox.shrink(),
+        ],
+      ),
     );
   }
 

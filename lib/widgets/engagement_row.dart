@@ -16,6 +16,10 @@ class EngagementRow extends StatelessWidget {
   final int numShares;
   final String themeMode;
 
+  String formatCount(int count) {
+    return count >= 1000 ? '${(count / 1000).toStringAsFixed(1)}k' : '$count';
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -28,7 +32,6 @@ class EngagementRow extends StatelessWidget {
         Row(
           children: [
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 SvgPicture.asset(
                   'assets/icons/heart.svg',
@@ -37,14 +40,13 @@ class EngagementRow extends StatelessWidget {
                 ),
                 const SizedBox(width: 6),
                 Text(
-                  '${numLikes}k',
+                  formatCount(numLikes),
                   style: theme.textTheme.bodyMedium?.copyWith(color: iconColor),
                 ),
               ],
             ),
             const SizedBox(width: 15),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 SvgPicture.asset(
                   'assets/icons/comment.svg',
@@ -53,7 +55,7 @@ class EngagementRow extends StatelessWidget {
                 ),
                 const SizedBox(width: 6),
                 Text(
-                  '${numComments}k',
+                  formatCount(numComments),
                   style: theme.textTheme.bodyMedium?.copyWith(color: iconColor),
                 ),
               ],
@@ -69,7 +71,7 @@ class EngagementRow extends StatelessWidget {
             ),
             const SizedBox(width: 4),
             Text(
-              '${numShares}k',
+              formatCount(numShares),
               style: theme.textTheme.bodyMedium?.copyWith(color: iconColor),
             ),
           ],

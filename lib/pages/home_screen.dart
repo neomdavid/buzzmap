@@ -201,7 +201,7 @@ class HomeScreen extends StatelessWidget {
                   'TRAVELERS BEWARE!',
                   "It's a big year for Dengue.",
                   width: 150,
-                  height: 110, // Adjusted to align with the bigger card
+                  height: 120, // Adjusted to align with the bigger card
                 ),
                 const SizedBox(
                     height: 3), // Small spacing between card and button
