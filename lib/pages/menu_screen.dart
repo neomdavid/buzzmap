@@ -44,8 +44,7 @@ class MenuScreen extends StatelessWidget {
             _buildMenuButton(context, 'Mapping', '/mapping', theme),
             _buildMenuButton(context, 'Community', '/community', theme),
             _buildMenuButton(context, 'Prevention', '/prevention', theme),
-            _buildMenuButton(context, 'About', '/about',
-                theme), // Added About page in the menu
+            _buildMenuButton(context, 'About', '/about', theme),
           ],
         ),
       ),
@@ -60,7 +59,6 @@ class MenuScreen extends StatelessWidget {
       onPressed: () {
         Navigator.pop(context);
         if (!isActive) {
-          // Ensure Home goes to '/home' instead of '/'
           Navigator.pushNamed(context, route == '/' ? '/home' : route);
         }
       },
@@ -78,5 +76,3 @@ class MenuScreen extends StatelessWidget {
     );
   }
 }
-
-// About page route is now in the menu! 🚀

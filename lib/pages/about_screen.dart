@@ -46,22 +46,20 @@ class AboutScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Container(
-                        width: 36, // Smaller circle size
+                        width: 36,
                         height: 36,
                         decoration: const BoxDecoration(
                           shape: BoxShape.circle,
-                          color: Color(0xFF2D5D68), // Background color
+                          color: Color(0xFF2D5D68),
                         ),
                         child: IconButton(
-                          icon: const Icon(Icons.arrow_back,
-                              size: 23), // Smaller icon size
-                          color: Colors.white, // Icon color
+                          icon: const Icon(Icons.arrow_back, size: 23),
+                          color: Colors.white,
                           onPressed: () {
                             Navigator.pop(context);
                           },
-                          padding: EdgeInsets.zero, // Remove padding
-                          constraints:
-                              const BoxConstraints(), // Remove default constraints
+                          padding: EdgeInsets.zero,
+                          constraints: const BoxConstraints(),
                         ),
                       ),
                       IconButton(
@@ -82,24 +80,19 @@ class AboutScreen extends StatelessWidget {
 
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment:
-                        CrossAxisAlignment.center, // Align items vertically
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      // SVG logo on the left, with adjusted vertical position
                       Transform.translate(
-                        offset: const Offset(1, 10), // Adjust Y-axis offset
+                        offset: const Offset(1, 10),
                         child: SvgPicture.asset(
-                          'assets/icons/logo_ligthbg.svg', // Replace with your SVG path
-                          width: 60, // Logo width
-                          height: 60, // Logo height
+                          'assets/icons/logo_ligthbg.svg',
+                          width: 60,
+                          height: 60,
                         ),
                       ),
-                      const SizedBox(width: 1), // Space between logo and text
-
-                      // Text on the right
+                      const SizedBox(width: 1),
                       Padding(
-                        padding: const EdgeInsets.only(
-                            right: 40.0), // Push text left
+                        padding: const EdgeInsets.only(right: 40.0),
                         child: RichText(
                           textAlign: TextAlign.center,
                           text: TextSpan(
@@ -155,8 +148,7 @@ class AboutScreen extends StatelessWidget {
                       children: [
                         const TextSpan(
                           text: 'BuzzMap ',
-                          style: TextStyle(
-                              fontWeight: FontWeight.w700), // Bold BUZZMAP
+                          style: TextStyle(fontWeight: FontWeight.w700),
                         ),
                         const TextSpan(
                           text:
@@ -164,8 +156,7 @@ class AboutScreen extends StatelessWidget {
                         ),
                         const TextSpan(
                           text: '(QC CESU)',
-                          style: TextStyle(
-                              fontWeight: FontWeight.w700), // Bold QC CESU
+                          style: TextStyle(fontWeight: FontWeight.w700),
                         ),
                         const TextSpan(
                           text:
@@ -194,19 +185,15 @@ class AboutScreen extends StatelessWidget {
                         fontFamily: 'Inter',
                         fontWeight: FontWeight.w400,
                         height: 1.36,
-                        color: Theme.of(context)
-                            .colorScheme
-                            .onSurface, // Use your color scheme
+                        color: Theme.of(context).colorScheme.onSurface,
                       ),
                       children: [
                         TextSpan(
                           text:
                               'BuzzMap is dedicated to empowering communities through \n real-time dengue tracking, crowdsourced reports, and \n data-driven insights.',
                           style: TextStyle(
-                            fontWeight: FontWeight.w700, // Bold for BuzzMap
-                            color: Theme.of(context)
-                                .colorScheme
-                                .primary, // Optional: Primary color for BuzzMap
+                            fontWeight: FontWeight.w700,
+                            color: Theme.of(context).colorScheme.primary,
                           ),
                         ),
                         TextSpan(
@@ -258,15 +245,12 @@ class AboutScreen extends StatelessWidget {
                             ),
                           ),
                           const SizedBox(height: 20),
-
-                          // Team members in a blue card with gradient background
                           Container(
                             padding: const EdgeInsets.all(20),
                             decoration: BoxDecoration(
                               gradient: LinearGradient(
                                 colors: [
-                                  Color.fromRGBO(
-                                      36, 82, 97, 1), // Starting color
+                                  Color.fromRGBO(36, 82, 97, 1),
                                   Color.fromRGBO(74, 168, 199, 1),
                                 ],
                                 begin: Alignment.topCenter,
@@ -399,4 +383,3 @@ class AboutScreen extends StatelessWidget {
     );
   }
 }
-// Now the screen has a back button and a menu button, without an app bar! 🚀
