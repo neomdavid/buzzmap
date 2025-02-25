@@ -10,7 +10,12 @@ class InterestsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: 'Interests', currentRoute: '/interests', themeMode: 'dark',),
+      appBar: CustomAppBar(
+        title: 'Interests',
+        currentRoute: '/interests',
+        themeMode: 'dark',
+        bannerTitle: 'Interests',
+      ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: Column(

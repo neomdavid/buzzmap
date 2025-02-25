@@ -10,7 +10,12 @@ class ArticleScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: CustomAppBar(title: 'Articles', currentRoute: '/articles'),
+        appBar: CustomAppBar(
+          title: 'Articles',
+          currentRoute: '/articles',
+          bannerTitle: 'Articles',
+          themeMode: 'dark',
+        ),
         body: SingleChildScrollView(
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
             child: Column(

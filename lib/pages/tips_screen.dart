@@ -12,6 +12,7 @@ class TipsScreen extends StatelessWidget {
         title: 'Prevention / Tips',
         currentRoute: '/tips',
         themeMode: 'dark',
+        bannerTitle: 'Prevention/Tips',
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 20.0),

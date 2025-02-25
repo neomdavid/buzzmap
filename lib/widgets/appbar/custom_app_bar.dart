@@ -7,12 +7,16 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   final String currentRoute;
   final String themeMode;
+  final String? bannerTitle; // Optional banner title
+  final VoidCallback? onBannerClose; // Optional callback for the X icon
 
   const CustomAppBar({
     super.key,
     required this.title,
     required this.currentRoute,
     this.themeMode = "light",
+    this.bannerTitle,
+    this.onBannerClose,
   });
 
   @override
@@ -104,11 +108,9 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                   const begin = Offset(1.0, 0.0);
                   const end = Offset.zero;
                   const curve = Curves.easeInOut;
-
                   var slideTween = Tween(begin: begin, end: end)
                       .chain(CurveTween(curve: curve));
                   var slideAnimation = animation.drive(slideTween);
-
                   var fadeTween = Tween<double>(begin: 1.0, end: 0.0);
                   var fadeAnimation = animation.drive(fadeTween);
 
@@ -124,9 +126,63 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         ),
         const SizedBox(width: 8),
       ],
+      // Optional banner below the AppBar
+      bottom: bannerTitle != null
+          ? PreferredSize(
+              preferredSize: const Size.fromHeight(50.0),
+              child: Container(
+                height: 40.0,
+                color: theme.colorScheme.primary, // Banner background color
+                child: Row(
+                  children: [
+                    // X icon inside a white circle
+                    IconButton(
+                      onPressed: () {
+                        if (onBannerClose != null) {
+                          onBannerClose!();
+                        } else {
+                          Navigator.pop(context);
+                        }
+                      },
+                      icon: Container(
+                        width: 21,
+                        height: 21,
+                        decoration: const BoxDecoration(
+                          color: Colors.white,
+                          shape: BoxShape.circle,
+                        ),
+                        child: Center(
+                          child: SvgPicture.asset(
+                            'assets/icons/close.svg',
+                            color: theme.colorScheme.primary,
+                            width: 10,
+                            height: 10,
+                          ),
+                        ),
+                      ),
+                    ),
+                    // Centered title
+                    Expanded(
+                      child: Center(
+                        child: Text(
+                          bannerTitle!,
+                          style: theme.textTheme.titleMedium?.copyWith(
+                            color: theme.colorScheme.onPrimary,
+                          ),
+                        ),
+                      ),
+                    ),
+                    // Spacer to balance the layout (adjust width as needed)
+                    const SizedBox(width: 48),
+                  ],
+                ),
+              ),
+            )
+          : null,
     );
   }
 
   @override
-  Size get preferredSize => const Size.fromHeight(56);
+  Size get preferredSize =>
+      Size.fromHeight(56.0 + (bannerTitle != null ? 50.0 : 0.0));
 }
