@@ -24,7 +24,7 @@ class HomeScreen extends StatelessWidget {
             top: 0,
             left: 0,
             right: 0,
-            height: MediaQuery.of(context).size.height * 0.33,
+            height: MediaQuery.of(context).size.height * 0.30,
             child: Container(
               decoration: BoxDecoration(
                 color: colorScheme.primary, // Background color
@@ -87,7 +87,7 @@ class HomeScreen extends StatelessWidget {
             bottom: 0,
             child: SingleChildScrollView(
               child: Padding(
-                padding: const EdgeInsets.only(top: 59.0),
+                padding: const EdgeInsets.only(top: 12.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
@@ -116,6 +116,14 @@ class HomeScreen extends StatelessWidget {
                           ),
                         ],
                       ),
+                    ),
+                    _buildText(
+                      'Report Cases, Raise Awareness, and \n Help Protect Your Community!',
+                      style: TextStyle(
+                          fontSize: 12,
+                          color: colorScheme.primary,
+                          fontFamily: 'Koulen',
+                          height: 1),
                     ),
                     _buildAwarenessSection(
                         colorScheme), // Removed extra spacing
@@ -158,12 +166,263 @@ class HomeScreen extends StatelessWidget {
                         ],
                       ),
                     ),
+
+                    _buildPreventionCards(colorScheme),
                   ],
                 ),
               ),
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _buildPreventionCards(ColorScheme colorScheme) {
+    return Column(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start, // Align to the top
+          children: [
+            _buildCard(
+              colorScheme,
+              'How to \nIdentify \nDengue \nMosquitoes?',
+              'assets/bgarts/thinkman.png',
+              width: 212,
+              height: 145,
+            ),
+            const SizedBox(width: 12),
+            Column(
+              children: [
+                _buildSmallCard(
+                  colorScheme,
+                  'TRAVELERS BEWARE!',
+                  "It's a big year for Dengue.",
+                  width: 150,
+                  height: 110, // Adjusted to align with the bigger card
+                ),
+                const SizedBox(
+                    height: 3), // Small spacing between card and button
+                Container(
+                  height: 35,
+                  width: 150,
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [
+                        Color.fromRGBO(248, 169, 0, 1), // Left color
+                        Color.fromRGBO(250, 221, 55, 1), // Right color
+                      ],
+                      begin: Alignment.centerLeft,
+                      end: Alignment.centerRight,
+                    ),
+                    borderRadius:
+                        BorderRadius.circular(30), // Match button shape
+                  ),
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor:
+                          Colors.transparent, // Transparent to show gradient
+                      shadowColor: Colors.transparent, // Remove shadow
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                    ),
+                    child: const Text(
+                      'More Prevention Tips',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 10,
+                        fontStyle: FontStyle.italic,
+                        fontWeight: FontWeight.bold,
+                        color: Color.fromRGBO(36, 82, 97, 1),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+
+  Widget _buildCard(ColorScheme colorScheme, String text, String imagePath,
+      {double width = 250, double height = 130}) {
+    return SizedBox(
+      width: width,
+      height: height,
+      child: Stack(
+        clipBehavior: Clip.none, // Allow image to overflow the card
+        children: [
+          // Background Card
+          Container(
+            padding: const EdgeInsets.all(15),
+            decoration: BoxDecoration(
+              color: Color.fromRGBO(96, 147, 175, 1),
+              borderRadius: BorderRadius.circular(15),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                // Left side (Text and Button)
+                Expanded(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        text,
+                        textAlign: TextAlign.left,
+                        style: const TextStyle(
+                            fontSize: 17,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                            height: 1.3),
+                      ),
+                      const SizedBox(height: 5),
+
+                      // Gradient Button
+                      // Gradient Button Wrapper
+                      Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          gradient: const LinearGradient(
+                            colors: [
+                              Color.fromRGBO(248, 169, 0, 1),
+                              Color.fromRGBO(250, 221, 55, 1),
+                            ],
+                            begin: Alignment.centerLeft,
+                            end: Alignment.centerRight,
+                          ),
+                        ),
+                        child: Material(
+                          color: Colors
+                              .transparent, // Transparent to show gradient
+                          child: InkWell(
+                            borderRadius: BorderRadius.circular(30),
+                            onTap: () {}, // Button action
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 15,
+                                  vertical: 4), // Modify vertical size freely
+                              child: const Text(
+                                'Learn More',
+                                style: TextStyle(
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+
+          // Overlapping Image
+          Positioned(
+            right: -15, // Move image slightly outside the card
+            top: -1,
+            child: SizedBox(
+              width: 140,
+              height: 150,
+              child: OverflowBox(
+                maxWidth: 140, // Allow it to extend beyond card
+                maxHeight: 180,
+                child: Image.asset(imagePath, fit: BoxFit.contain),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildSmallCard(ColorScheme colorScheme, String title, String subtitle,
+      {double width = 140, double height = 160}) {
+    return SizedBox(
+      width: width,
+      height: height,
+      child: Container(
+        padding: const EdgeInsets.all(10),
+        decoration: BoxDecoration(
+          color: Color.fromRGBO(153, 192, 211, 1),
+          borderRadius: BorderRadius.circular(15),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Column(
+              children: [
+                Text(
+                  title,
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                    fontFamily: 'Koulen',
+                    letterSpacing: 1.9,
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                    height: 1,
+                  ),
+                ),
+                const SizedBox(height: 1),
+                Text(
+                  subtitle,
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                    fontSize: 11,
+                    color: Colors.white,
+                    height: 1,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 4),
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15),
+                gradient: const LinearGradient(
+                  colors: [
+                    Color.fromRGBO(248, 169, 0, 1),
+                    Color.fromRGBO(250, 221, 55, 1),
+                  ],
+                  begin: Alignment.centerLeft,
+                  end: Alignment.centerRight,
+                ),
+              ),
+              child: Material(
+                color: Colors.transparent, // Transparent to show gradient
+                child: InkWell(
+                  borderRadius: BorderRadius.circular(30),
+                  onTap: () {}, // Button action
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 20,
+                        vertical: 4), // Modify vertical size freely
+                    child: const Text(
+                      'Learn More',
+                      style: TextStyle(
+                        fontSize: 10,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -236,19 +495,11 @@ class HomeScreen extends StatelessWidget {
   Widget _buildAwarenessSection(ColorScheme colorScheme) {
     return Column(
       children: [
-        _buildText(
-          'Report Cases, Raise Awareness, and \n Help Protect Your Community!',
-          style: TextStyle(
-            fontSize: 16,
-            color: colorScheme.primary,
-            fontFamily: 'Koulen',
-          ),
-        ),
-        const SizedBox(height: 16),
+        const SizedBox(height: 12),
         // Wrap the button Container in a SizedBox or ConstrainedBox
         SizedBox(
           height: 45,
-          width: 300, // Set a fixed width for the button (adjust as needed)
+          width: 350, // Set a fixed width for the button (adjust as needed)
           child: Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
@@ -294,7 +545,7 @@ class HomeScreen extends StatelessWidget {
                     padding:
                         const EdgeInsets.symmetric(horizontal: 20, vertical: 4),
                     decoration: BoxDecoration(
-                      color: Color.fromRGBO(219, 235, 243, 255),
+                      color: Color.fromRGBO(219, 235, 243, 1),
                       borderRadius: BorderRadius.circular(30),
                     ),
                     child: const Text(
@@ -319,6 +570,8 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
         ),
+
+        const SizedBox(height: 12),
         SizedBox(
           width: 250, // Set a fixed width for the button (adjust as needed)
           height: 40, // Set a fixed height for the button (adjust as needed)
@@ -357,7 +610,8 @@ class HomeScreen extends StatelessWidget {
                   style: TextStyle(
                     color: colorScheme.primary, // Ensure text is white
                     fontWeight: FontWeight.w900,
-                    fontSize: 10,
+                    fontStyle: FontStyle.italic,
+                    fontSize: 12,
                     fontFamily: 'Inter',
                   ),
                 ),
@@ -365,6 +619,7 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
         ),
+        const SizedBox(height: 12),
       ],
     );
   }

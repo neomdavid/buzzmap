@@ -60,7 +60,8 @@ class MenuScreen extends StatelessWidget {
       onPressed: () {
         Navigator.pop(context);
         if (!isActive) {
-          Navigator.pushNamed(context, route);
+          // Ensure Home goes to '/home' instead of '/'
+          Navigator.pushNamed(context, route == '/' ? '/home' : route);
         }
       },
       child: Text(

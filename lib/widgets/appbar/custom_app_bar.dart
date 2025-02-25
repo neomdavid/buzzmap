@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:buzzmap/pages/menu_screen.dart';
+import 'package:buzzmap/pages/notification_screen.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
@@ -78,7 +79,13 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             height: 24,
             colorFilter: ColorFilter.mode(iconColor, BlendMode.srcIn),
           ),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => const NotificationScreen()),
+            );
+          },
         ),
         const SizedBox(width: 8),
         IconButton(
