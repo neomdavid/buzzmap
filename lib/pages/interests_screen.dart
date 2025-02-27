@@ -81,7 +81,6 @@ class InterestsScreen extends StatelessWidget {
                   itemBuilder: (context, index) {
                     return ArticleSampler(
                       article: ArticlesData.interestsArticles[index],
-                      height: 130,
                       textColor: Colors.white,
                       bgColor: surfaceDarkColor,
                       isInInterest: true,

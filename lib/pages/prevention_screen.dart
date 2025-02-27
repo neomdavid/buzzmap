@@ -14,9 +14,6 @@ class PreventionScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final customColors = Theme.of(context).extension<CustomColors>();
-    final theme = Theme.of(context);
-
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: const CustomAppBar(
@@ -98,7 +95,7 @@ class PreventionScreen extends StatelessWidget {
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                                const TipsScreen()));
+                                                TipsScreen()));
                                   },
                                   child: Container(
                                     width: 125,
@@ -121,11 +118,7 @@ class PreventionScreen extends StatelessWidget {
                               width: double.infinity,
                               height: double.infinity,
                               decoration: BoxDecoration(
-                                gradient: const LinearGradient(
-                                    begin: Alignment.topRight,
-                                    end: Alignment.bottomLeft,
-                                    colors: [primaryColor, surfaceDarkColor],
-                                    tileMode: TileMode.mirror),
+                                color: primaryColor,
                                 borderRadius: BorderRadius.circular(12),
                               ),
                             ),
@@ -184,7 +177,8 @@ class PreventionScreen extends StatelessWidget {
                                   height: 45,
                                   alignment: Alignment.center,
                                   color: Colors.yellow,
-                                  child: const Icon(Icons.arrow_forward,
+                                  child: const Icon(
+                                      Icons.arrow_forward_ios_rounded,
                                       color: Colors.black),
                                 )))
                           ])),
@@ -234,8 +228,9 @@ class PreventionScreen extends StatelessWidget {
                                   width: 45,
                                   height: 45,
                                   alignment: Alignment.center,
-                                  color: const Color(0xFF245261),
-                                  child: const Icon(Icons.arrow_forward,
+                                  color: secondaryColor,
+                                  child: const Icon(
+                                      Icons.arrow_forward_ios_rounded,
                                       color: Colors.black),
                                 )))
                           ])),
@@ -287,19 +282,16 @@ class PreventionScreen extends StatelessWidget {
                     fontWeight: FontWeight.bold)),
           ),
           const SizedBox(height: 8),
-          ListView.separated(
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            itemCount: ArticlesData.articles.length,
-            itemBuilder: (context, index) {
-              return ArticleSampler(article: ArticlesData.articles[index]);
-            },
-            separatorBuilder: (context, index) => const SizedBox(height: 10),
-            // children: [
-            //   ...ArticlesData.articles.map((article) {
-            //     return ArticleSampler(article: article);
-            //   }),
-            // ],
+          SizedBox(
+            height: 500,
+            child: ListView.separated(
+              physics: AlwaysScrollableScrollPhysics(),
+              itemCount: ArticlesData.articles.length,
+              itemBuilder: (context, index) {
+                return ArticleSampler(article: ArticlesData.articles[index]);
+              },
+              separatorBuilder: (context, index) => const SizedBox(height: 10),
+            ),
           ),
           const SizedBox(height: 25)
         ],

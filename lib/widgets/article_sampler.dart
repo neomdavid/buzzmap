@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 class ArticleSampler extends StatelessWidget {
   final Map<String, dynamic> article;
-  final double height;
+  // final double height;
   final Color color;
   final Color textColor;
   final Color bgColor;
@@ -13,7 +13,7 @@ class ArticleSampler extends StatelessWidget {
   const ArticleSampler(
       {super.key,
       required this.article,
-      this.height = 100,
+      // this.height = 100,
       this.color = Colors.white,
       this.textColor = primaryColor,
       this.bgColor = Colors.white,
@@ -35,7 +35,7 @@ class ArticleSampler extends StatelessWidget {
           color: bgColor,
         ),
         child: SizedBox(
-          height: height,
+          height: isInInterest ? 130 : 100,
           child: Padding(
             padding: isInInterest
                 ? const EdgeInsets.only(left: 8, top: 4, bottom: 2, right: 3)
@@ -53,16 +53,16 @@ class ArticleSampler extends StatelessWidget {
     return Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
       _buildArticleImage(),
       const SizedBox(width: 12),
-      _buildArticleDetails(),
+      Center(child: _buildArticleDetails()),
     ]);
   }
 
   Widget _buildArticleImage() {
-    return Padding(
-      padding: EdgeInsets.only(top: 8, bottom: 8, left: isInInterest ? 10 : 0),
-      child: SizedBox(
-        width: 109,
-        height: double.infinity,
+    return SizedBox(
+      width: 100,
+      height: double.infinity,
+      child: Padding(
+        padding: EdgeInsets.symmetric(vertical: 10),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(16),
           child: Image.network(article['articleImage'], fit: BoxFit.cover),
@@ -74,9 +74,9 @@ class ArticleSampler extends StatelessWidget {
   Widget _buildArticleDetails() {
     return SizedBox(
         width: isInInterest ? 220 : 250,
-        height: height,
+        height: isInInterest ? 130 : 100,
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          const SizedBox(height: 5),
+          const SizedBox(height: 10),
           Image.network(article['publicationLogo'],
               width: 47, height: 10, fit: BoxFit.cover),
           Text(article['articleTitle'],
@@ -94,17 +94,15 @@ class ArticleSampler extends StatelessWidget {
                 color: textColor,
               )),
           const SizedBox(height: 15),
-          Expanded(
-            child: Padding(
-                padding: const EdgeInsets.only(right: 28),
-                child: Text(article['sampleText'],
-                    maxLines: article['maxLines'],
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                      color: isInInterest ? onPrimaryColor : textColor,
-                      fontSize: 9,
-                    ))),
-          )
+          Padding(
+              padding: const EdgeInsets.only(right: 28),
+              child: Text(article['sampleText'],
+                  maxLines: article['maxLines'],
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    color: isInInterest ? onPrimaryColor : textColor,
+                    fontSize: 9,
+                  ))),
         ]));
   }
 

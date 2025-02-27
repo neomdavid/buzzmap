@@ -1,0 +1,2 @@
+/Users/russeljeromerapi/Desktop/VS Code Folders/Projects/BuzzMap-test/buzzmap/android/app/.cxx/RelWithDebInfo/2n1t24k2/arm64-v8a/CMakeFiles/edit_cache.dir
+/Users/russeljeromerapi/Desktop/VS Code Folders/Projects/BuzzMap-test/buzzmap/android/app/.cxx/RelWithDebInfo/2n1t24k2/arm64-v8a/CMakeFiles/rebuild_cache.dir
