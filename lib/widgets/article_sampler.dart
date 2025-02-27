@@ -93,7 +93,6 @@ class ArticleSampler extends StatelessWidget {
                 fontSize: 9,
                 color: textColor,
               )),
-          const SizedBox(height: 15),
           Padding(
               padding: const EdgeInsets.only(right: 28),
               child: Text(article['sampleText'],
