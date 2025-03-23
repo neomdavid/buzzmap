@@ -234,7 +234,7 @@ class PreventionScreen extends StatelessWidget {
                                   width: 45,
                                   height: 45,
                                   alignment: Alignment.center,
-                                  color: const Color(0xFF245261),
+                                  color: Colors.yellow ,
                                   child: const Icon(Icons.arrow_forward,
                                       color: Colors.black),
                                 )))

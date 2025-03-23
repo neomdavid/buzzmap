@@ -114,7 +114,7 @@ class MappingScreen extends StatelessWidget {
           child: DropdownButton<String>(
             isExpanded: true,
             padding: EdgeInsets.zero,
-            dropdownColor: Colors.black,
+            dropdownColor: Color.fromRGBO(36, 82, 97, 1),
             underline: const SizedBox(),
             icon: const Icon(Icons.arrow_drop_down, color: Colors.white),
             iconSize: 24,

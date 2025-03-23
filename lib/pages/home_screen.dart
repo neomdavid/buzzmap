@@ -1,3 +1,5 @@
+import 'package:buzzmap/pages/prevention_screen.dart';
+import 'package:buzzmap/pages/community_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:buzzmap/widgets/appbar/custom_app_bar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -125,7 +127,7 @@ class HomeScreen extends StatelessWidget {
                           fontFamily: 'Koulen',
                           height: 1),
                     ),
-                    _buildAwarenessSection(colorScheme),
+                    _buildAwarenessSection(context, colorScheme),
                     RichText(
                       text: TextSpan(
                         children: [
@@ -162,7 +164,7 @@ class HomeScreen extends StatelessWidget {
                         ],
                       ),
                     ),
-                    _buildPreventionCards(colorScheme),
+                    _buildPreventionCards(context,colorScheme),
                   ],
                 ),
               ),
@@ -173,7 +175,7 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildPreventionCards(ColorScheme colorScheme) {
+  Widget _buildPreventionCards(BuildContext context, ColorScheme colorScheme) {
     return Column(
       children: [
         Row(
@@ -212,15 +214,20 @@ class HomeScreen extends StatelessWidget {
                     ),
                     borderRadius: BorderRadius.circular(30),
                   ),
-                  child: ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.transparent,
-                      shadowColor: Colors.transparent,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                    ),
+                   child: ElevatedButton(
+    onPressed: () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => PreventionScreen()), // Replace with your actual page widget
+      );
+    },
+    style: ElevatedButton.styleFrom(
+      backgroundColor: Colors.transparent,
+      shadowColor: Colors.transparent,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(30),
+      ),
+    ),
                     child: const Text(
                       'More Prevention Tips',
                       textAlign: TextAlign.center,
@@ -436,7 +443,7 @@ class HomeScreen extends StatelessWidget {
           child: DropdownButton<String>(
             isExpanded: true,
             padding: EdgeInsets.zero,
-            dropdownColor: Colors.black,
+            dropdownColor: Color.fromRGBO(36, 82, 97, 1),
             underline: const SizedBox(),
             icon: const Icon(Icons.arrow_drop_down, color: Colors.white),
             iconSize: 24,
@@ -474,7 +481,7 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildAwarenessSection(ColorScheme colorScheme) {
+  Widget _buildAwarenessSection(BuildContext context, ColorScheme colorScheme) {
     return Column(
       children: [
         const SizedBox(height: 12),
@@ -555,7 +562,12 @@ class HomeScreen extends StatelessWidget {
           width: 250,
           height: 40,
           child: ElevatedButton(
-            onPressed: () {},
+            onPressed: () {     Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => CommunityScreen()), // Ensure this screen exists
+      );
+    },
+            
             style: ElevatedButton.styleFrom(
               foregroundColor: Colors.white,
               padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
